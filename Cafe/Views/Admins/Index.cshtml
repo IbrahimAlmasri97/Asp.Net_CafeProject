@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Cafe.Models.Admin>
+
+@{
+    ViewBag.Title = "AdminsIndex";
+}
+<style>
+    table {
+        justify-content: center;
+        display: flex;
+    }
+    h2, p {
+        text-align:center;
+    }
+    .table > tbody > tr > td {
+        padding: 20px;
+        border-bottom: 2px solid black;
+        background-color: rgb(13 19 69 / 0.79);
+        color:white;
+        font-weight:bold;
+    }
+</style>
+<h2>Admins List</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.password)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+</table>

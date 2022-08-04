@@ -1,0 +1,60 @@
+﻿@model Cafe.Models.Drink
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+
+@using (Html.BeginForm("Create", "Drinks", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+  
+<div class="form-horizontal">
+    <h2>Create new Drink</h2>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    <div class="form-group">
+        @*@Html.LabelFor(model => model.Dimg, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <div class="col-md-10">
+            <input type="file" id="imgFile" name="imgFile" class="form-control" required/>
+            @Html.ValidationMessageFor(model => model.Dimg, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @*@Html.LabelFor(model => model.Dname, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Dname, new { htmlAttributes = new { @class = "form-control", placeholder = "Name drink" } })
+            @Html.ValidationMessageFor(model => model.Dname, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @*@Html.LabelFor(model => model.Dprice, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <div class="col-md-10">
+
+            @Html.EditorFor(model => model.Dprice, new { htmlAttributes = new { @class = "form-control", placeholder = "Price drink" } })
+            @Html.ValidationMessageFor(model => model.Dprice, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-info" />
+        </div>
+    </div>
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

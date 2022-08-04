@@ -1,0 +1,45 @@
+﻿
+@model IEnumerable<Cafe.Models.Drink>
+
+@{
+    ViewBag.Title = "Index";
+    if (@Session["username"] == null)
+    {
+        <style>
+            .username {
+                display: none;
+            }
+        </style>
+    }
+    else
+    {
+        <style>
+            .username {
+                display: block;
+            }
+        </style>
+    }
+}
+<div style="text-align:center; margin-top:20px;font-size:20px;margin-top:0px">
+    @Html.ActionLink("Create New Item", "Create", "Drinks", new { @class = "btn btn-info" })
+</div>
+
+<div class="container">
+    @foreach (var item in Model)
+    {
+        <div class="row  col-xs-12 col-sm-6 col-lg-4 ">
+            <div class="card">
+                <img class="card-img-top " src="@Url.Content(item.Dimg)" alt="Card image cap">
+                <div class="card-body">
+                    <h2 class="card-title"> @Html.DisplayFor(modelItem => item.Dname)</h2>
+                    <span class="card-text">@Html.DisplayFor(modelItem => item.Dprice)</span><span>JD</span><br>
+                    @*<a href="#" class="btn btn-primary">buy now</a>*@
+                </div>
+                <br>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-danger" })
+            </div>
+        </div>
+    }
+</div>
+

@@ -1,0 +1,47 @@
+﻿@model Cafe.Models.Drink
+
+
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<style>
+    .row {
+        margin: auto;
+        width: 94%;
+        float: none;
+    }
+    .card {
+        height: 360px;
+    }
+        .card img {
+            height: 380px;
+            border-radius: 0px;
+            border-bottom: 2px solid #40508d;
+        }
+       body {
+            padding:0px;
+        }
+    .header {
+        display:none;
+    }
+
+
+</style>
+
+<div class="contener-img">
+    @*<div class="card">*@
+        <img class="img" src="@Url.Content(Model.Dimg)" >
+        @*<div class="card-body">*@
+            <h2 class="card-title"> @Html.DisplayFor(modelItem => Model.Dname)</h2>
+            <span class="card-text">@Html.DisplayFor(modelItem => Model.Dprice)</span><span>JD</span><br>
+            <p>شامل الضريبة</p>
+            @*<a href="#" class="btn btn-primary">buy now</a>*@
+        @*</div>*@
+        <br>
+        @*@Html.ActionLink("Edit", "Edit", new { id = m.id }) |
+        @Html.ActionLink("Details", "Details", new { id = item.id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.id })*@
+    @*</div>*@
+</div>

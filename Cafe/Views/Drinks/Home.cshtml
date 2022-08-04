@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Cafe.Models.Drink>
+
+@{
+    ViewBag.Title = "Home";
+}
+<style>
+    #myVideo {
+        position: relative;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        height: 300px;
+        background-color: #0000006e;
+        border: 2px solid #000000;
+    }
+
+    /* Add some content at the bottom of the video/page */
+    .content {
+        position: relative;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        color: #f1f1f1;
+        width: 100%;
+        padding: 20px;
+    }
+
+    /* Style the button used to pause/play the video */
+    #myBtn {
+        width: 200px;
+        font-size: 18px;
+        padding: 10px;
+        border: none;
+        background: #000;
+        color: #fff;
+        cursor: pointer;
+    }
+
+        #myBtn:hover {
+            background: #ddd;
+            color: black;
+        }
+</style>
+<div class="container">
+    <video autoplay muted loop id="myVideo">
+        <source src="~/Video/ann.mp4" type="video/mp4">
+    </video>
+
+    <!-- Optional: some overlay text to describe the video -->
+    <!--<div class="content">
+        <h1>Heading</h1>
+        <p>Lorem ipsum...</p>-->
+        <!-- Use a button to pause/play the video with JavaScript -->
+        <!--<button id="myBtn" onclick="myFunction()">Pause</button>
+    </div>-->
+    @foreach (var item in Model)
+    {
+        <div class="row  col-xs-12 col-sm-6 col-lg-4 ">
+            <div class="card">
+                <img class="card-img-top" src="@Url.Content(item.Dimg)" alt="Card image cap">
+                <div class="card-body">
+                    <h2 class="card-title"> @Html.DisplayFor(modelItem => item.Dname)</h2>
+                    <span class="card-text">@Html.DisplayFor(modelItem => item.Dprice)</span><span>JD</span><br>
+                    @*<a href="#" class="btn btn-primary">buy now</a>*@
+                </div>
+                <br>
+                @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn btn-info" })
+            </div>
+        </div>
+    }
+</div>
+
+
+

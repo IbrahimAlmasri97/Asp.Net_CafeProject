@@ -1,0 +1,32 @@
+﻿@model Cafe.Models.Drink
+
+@{
+    ViewBag.Title = "Delete";
+}
+<div style="text-align:center;">
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Drink</h4>
+    <hr />
+    <dl style="text-align:center;">
+        <dd>
+            @Html.DisplayFor(model => model.Dname)
+        </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Dprice)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
+</div>
